@@ -1,0 +1,12 @@
+{
+  "name": "roomcontrol",
+  "app_id": "c46114cf",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}
