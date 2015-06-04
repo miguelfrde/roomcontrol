@@ -2,11 +2,12 @@
 <widget id="com.ionicframework.roomcontrol572638" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>roomcontrol</name>
   <description>
-        An Ionic Framework and Cordova project.
-    </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
-    </author>
+      App linked to a Raspberry Pi that is running roomcontrol_backend to
+      control a room's lights, setup alarms and play music.
+  </description>
+  <author email="miguel.frde@gmail.com" href="http://miguelfrde.com/">
+    Miguel Flores Ruiz de Eguino 
+  </author>
   <content src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>
