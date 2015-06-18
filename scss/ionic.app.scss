@@ -21,3 +21,54 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+$main-menu-item-music-color: $balanced;
+$main-menu-item-light-color: $energized;
+$main-menu-item-alarm-color: $assertive;
+$main-menu-item-settings-color: $royal;
+
+#main-menu {
+  background-color: $stable;
+}
+
+.main-menu-item-row {
+  height: 50%;
+}
+
+.main-menu-item-cell {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+#main-menu-item-row-bot .main-menu-item-cell {
+  align-items: flex-start;
+}
+
+#main-menu-item-row-top .main-menu-item-cell {
+  align-items: flex-end;
+}
+
+.main-menu-item {
+  border-radius: 50%;
+  width: 7rem;
+  height: 7rem;
+  border: none;
+  font-size: 4rem;
+  color: $stable;
+}
+
+#main-menu-item-music {
+  background-color: $main-menu-item-music-color;
+}
+
+#main-menu-item-light {
+  background-color: $main-menu-item-light-color;
+}
+
+#main-menu-item-alarm {
+  background-color: $main-menu-item-alarm-color;
+}
+
+#main-menu-item-settings {
+  background-color: $main-menu-item-settings-color;
+}
