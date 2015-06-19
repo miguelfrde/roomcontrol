@@ -6,3 +6,5 @@ platforms/
 plugins/
 www/css/ionic.app.css
 www/css/ionic.app.min.css
+www/js/all.js
+www/js/all.js.map
