@@ -1,8 +1,10 @@
 'use strict';
 
 class PlaylistsCtrl {
-  constructor() {
+  constructor($scope) {
   }
 }
+
+PlaylistsCtrl.$inject = ['$scope'];
 
 export default PlaylistsCtrl;

@@ -1,8 +1,10 @@
 'use strict';
 
 class AlarmCtrl {
-  constructor() {
+  constructor($scope) {
   }
 }
+
+AlarmCtrl.$inject = ['$scope'];
 
 export default AlarmCtrl;

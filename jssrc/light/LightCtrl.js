@@ -1,8 +1,10 @@
 'use strict';
 
 class LightCtrl {
-  constructor() {
+  constructor($scope) {
   }
 }
+
+LightCtrl.$inject = ['$scope'];
 
 export default LightCtrl;

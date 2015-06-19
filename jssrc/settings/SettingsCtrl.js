@@ -1,8 +1,10 @@
 'use strict';
 
 class SettingsCtrl {
-  constructor() {
+  constructor($scope) {
   }
 }
+
+SettingsCtrl.$inject = ['$scope'];
 
 export default SettingsCtrl;

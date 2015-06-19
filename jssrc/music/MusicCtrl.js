@@ -1,8 +1,10 @@
 'use strict';
 
 class MusicCtrl {
-  constructor() {
+  constructor($scope) {
   }
 }
+
+MusicCtrl.$inject = ['$scope'];
 
 export default MusicCtrl;
