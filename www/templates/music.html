@@ -5,26 +5,26 @@
     </div>
     
     <div class="row">
-        <div class="col"><h3>{{Music.playlist.name}} playlist</h3></div>
+        <div class="col"><h3>{{currPlaylist.name}} playlist</h3></div>
     </div>
     
     <div class="row">
       <div class="col">
-        <img class="album-cover" src="{{Music.currentTrack.albumCoverUrl}}">
+        <img class="album-cover" src="{{track.albumCoverUrl}}">
       </div>
     </div>
 
     <div class="row">
       <div class="col">
-        {{Music.currentTrack.artist}} - {{Music.currentTrack.name}}
+        {{track.artist}} - {{track.name}}
       </div>
     </div>
 
     <div class="row">
       <div class="col">
-        <a class="button button-positive" id="change-playlist-btn" href="/#/music/playlists">
+        <button class="button button-positive" id="change-playlist-btn" ng-click="openModal()">
           Change playlist
-        </a>
+        </button>
       </div>
     </div>
   </ion-content>

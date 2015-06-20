@@ -9,11 +9,6 @@ export function router($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/music.html',
       controller: 'MusicCtrl'
     })
-    .state('music-playlists', {
-      url: '/music/playlists',
-      templateUrl: 'templates/musicplaylists.html',
-      controller: 'PlaylistsCtrl'
-    })
     .state('light', {
       url: '/light',
       templateUrl: 'templates/light.html'
