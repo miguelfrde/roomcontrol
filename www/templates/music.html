@@ -5,18 +5,18 @@
     </div>
     
     <div class="row">
-        <div class="col"><h3>{{playlistName}} playlist</h3></div>
+        <div class="col"><h3>{{Music.playlist.name}} playlist</h3></div>
     </div>
     
     <div class="row">
       <div class="col">
-        <img class="album-cover" src="{{track.albumCoverUrl}}">
+        <img class="album-cover" src="{{Music.currentTrack.albumCoverUrl}}">
       </div>
     </div>
 
     <div class="row">
       <div class="col">
-        {{track.artist}} - {{track.name}}
+        {{Music.currentTrack.artist}} - {{Music.currentTrack.name}}
       </div>
     </div>
 

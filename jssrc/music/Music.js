@@ -109,7 +109,7 @@ export class Music {
       this.currentPlaylist = p;
       this.tracks = this.playlists[p].tracks
       shuffle(this.tracks);
-      this.currentTrack = 0;
+      this.currTrack = 0;
     }
   }
 

@@ -1,4 +1,11 @@
 <ion-view view-title="My Playlists">
   <ion-content scroll="false" id="playlists">
+    <div ng-repeat="(id, playlist) in Music.playlists">
+      <div class="card">
+        <a class="item item-text-wrap" ng-click="changePlaylist({{id}})">
+          {{playlist.name}}
+        </a>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
