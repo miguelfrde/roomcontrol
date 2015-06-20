@@ -1,12 +1,11 @@
 // TODO: connect to the RPI, instead of using example values
 
 function shuffle(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * i);
-    const x = arr[i];
-    arr[i] = arr[j];
-    arr[j] = x;
-    return arr;
+  for (let i = 0; i < arr.length; i++) {
+    const r = i + Math.floor(Math.random() * (arr.length - i));
+    const t = arr[i];
+    arr[i] = arr[r];
+    arr[r] = t;
   }
 }
 
