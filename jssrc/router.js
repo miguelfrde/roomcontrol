@@ -6,7 +6,8 @@ export function router($stateProvider, $urlRouterProvider) {
     })
     .state('music', {
       url: '/music',
-      templateUrl: 'templates/music.html'
+      templateUrl: 'templates/music.html',
+      controller: 'MusicCtrl'
     })
     .state('music-playlists', {
       url: '/music/playlists',
