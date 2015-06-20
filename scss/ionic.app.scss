@@ -26,7 +26,7 @@ $main-menu-item-light-color: $energized;
 $main-menu-item-alarm-color: $assertive;
 $main-menu-item-settings-color: $royal;
 
-#main-menu {
+ion-content {
   background-color: $stable;
 }
 
@@ -77,7 +77,7 @@ $main-menu-item-settings-color: $royal;
 }
 
 #music {
-  margin: 1rem 0;
+  padding: 1rem 0;
 }
 
 .center {
