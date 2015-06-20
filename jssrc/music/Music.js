@@ -114,7 +114,7 @@ export class Music {
   }
 
   get playlist() {
-    return this.currentPlaylist;
+    return examplePlaylists[this.currentPlaylist];
   }
 
   get currentTrack() {

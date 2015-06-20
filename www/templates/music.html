@@ -1,4 +1,31 @@
 <ion-view view-title="Music">
-  <ion-content scroll="false" id="music">
+  <ion-content scroll="false" id="music" class="center">
+    <div class="row">
+      <div class="col">Now Playing</div>
+    </div>
+    
+    <div class="row">
+        <div class="col"><h3>{{playlistName}} playlist</h3></div>
+    </div>
+    
+    <div class="row">
+      <div class="col">
+        <img class="album-cover" src="{{track.albumCoverUrl}}">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        {{track.artist}} - {{track.name}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <a class="button button-positive" id="change-playlist-btn" href="/#/music/playlists">
+          Change playlist
+        </a>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
