@@ -1,4 +1,55 @@
 <ion-view view-title="Alarm">
   <ion-content scroll="false" id="alarm">
+    <div class="row">
+      <div class="col">
+        <button id="time-button" class="button button-full button-light">
+          08:00
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Sound
+          </div>
+          <select>
+            <option>Extreme wake up</option>
+            <option>Relaxed wake up</option>
+            <option selected>Crazy wake up</option>
+            <option>Beautiful morning</option>
+            <option>Cold morning</option>
+          </select>
+        </label>
+      </div>
+    </div>
+ 
+    <div class="row">
+      <div class="col">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Light program
+          </div>
+          <select>
+            <option>Morning lights</option>
+            <option selected>Psychedelic</option>
+            <option>Orange morning</option>
+            <option>Purple morning</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col" id="alarm-toggle">
+        <label class="toggle toggle-positive">
+          <input type="checkbox">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
