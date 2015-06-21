@@ -2,9 +2,11 @@
   <ion-content scroll="false" id="alarm">
     <div class="row">
       <div class="col">
-        <button id="time-button" class="button button-full button-light">
-          08:00
-        </button>
+        <ionic-timepicker etime="tpslots.epochTime" format="tpslots.format" step="tpslots.step" callback="timePickerCallback">    
+          <button id="time-button" class="button button-full button-light">
+            {{time}}
+          </button>
+        </ionic-timepicker>
       </div>
     </div>
 

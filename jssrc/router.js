@@ -15,7 +15,8 @@ export function router($stateProvider, $urlRouterProvider) {
     })
     .state('alarm', {
       url: '/alarm',
-      templateUrl: 'templates/alarm.html'
+      templateUrl: 'templates/alarm.html',
+      controller: 'AlarmCtrl'
     })
     .state('settings', {
       url: '/settings',
