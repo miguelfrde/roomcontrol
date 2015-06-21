@@ -6,7 +6,11 @@ import {LightCtrl} from 'light/LightCtrl';
 import {AlarmCtrl} from 'alarm/AlarmCtrl';
 import {SettingsCtrl} from 'settings/SettingsCtrl'; 
 
-angular.module('roomcontrol', ['ionic', 'roomcontrol.controllers', 'roomcontrol.services'])
+angular.module('roomcontrol', [
+    'ionic',
+    'ionic-timepicker',
+    'roomcontrol.controllers',
+    'roomcontrol.services'])
   .config(router)
   .run(onReady);
 
