@@ -11,7 +11,8 @@ export function router($stateProvider, $urlRouterProvider) {
     })
     .state('light', {
       url: '/light',
-      templateUrl: 'templates/light.html'
+      templateUrl: 'templates/light.html',
+      controller: 'LightCtrl'
     })
     .state('alarm', {
       url: '/alarm',
