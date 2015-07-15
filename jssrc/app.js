@@ -5,12 +5,14 @@ import {MusicCtrl} from 'music/MusicCtrl';
 import {LightCtrl} from 'light/LightCtrl';
 import {AlarmCtrl} from 'alarm/AlarmCtrl';
 import {SettingsCtrl} from 'settings/SettingsCtrl'; 
+import {ColorWheel} from 'directives/ColorWheel'; 
 
 angular.module('roomcontrol', [
     'ionic',
     'ionic-timepicker',
     'roomcontrol.controllers',
-    'roomcontrol.services'])
+    'roomcontrol.services',
+    'roomcontrol.directives'])
   .config(router)
   .run(onReady);
 
@@ -22,3 +24,6 @@ angular.module('roomcontrol.controllers', [])
 
 angular.module('roomcontrol.services', [])
   .service('Music', Music);
+
+angular.module('roomcontrol.directives', [])
+  .directive('colorWheel', () => new ColorWheel());

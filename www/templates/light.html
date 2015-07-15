@@ -7,7 +7,7 @@
     
     <div class="row center">
       <div class="col">
-        <img src="/img/color-wheel.png" id="color-wheel">
+        <color-wheel selected-color="color">
       </div>
     </div>
     
@@ -18,9 +18,8 @@
           <input type="range" name="intensity" min="0" max="100" ng-model="intensity">
           <i class="icon ion-ios-sunny-outline"></i>
         </div>
-        <ion-toggle toggle-class="toggle-positive">Status</ion-toggle>
+        <ion-toggle toggle-class="toggle-positive">Status {{color}}</ion-toggle>
       </div>
     </div>
-
   </ion-content>
 </ion-view>
