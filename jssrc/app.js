@@ -1,10 +1,10 @@
 import {onReady} from 'bootstrap';
 import {router} from 'router';
-import {Music} from 'music/Music';
-import {MusicCtrl} from 'music/MusicCtrl';
-import {LightCtrl} from 'light/LightCtrl';
-import {AlarmCtrl} from 'alarm/AlarmCtrl';
-import {SettingsCtrl} from 'settings/SettingsCtrl'; 
+import {Music} from 'services/Music';
+import {MusicCtrl} from 'controllers/MusicCtrl';
+import {LightCtrl} from 'controllers/LightCtrl';
+import {AlarmCtrl} from 'controllers/AlarmCtrl';
+import {SettingsCtrl} from 'controllers/SettingsCtrl'; 
 import {ColorWheel} from 'directives/ColorWheel'; 
 
 angular.module('roomcontrol', [
