@@ -111,3 +111,8 @@ img.album-cover {
 #color-wheel {
   margin: 2rem 0 1rem 0;
 }
+
+input[readonly] {
+  background-color: white !important;
+  color: $dark;
+}
