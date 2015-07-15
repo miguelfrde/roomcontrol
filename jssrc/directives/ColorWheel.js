@@ -20,15 +20,22 @@ export class ColorWheel {
       const canvasX = Math.floor(e.pageX - canvas.offsetLeft);
       // TODO: why the 44?
       const canvasY = Math.floor(e.pageY - canvas.offsetTop) - 44;
-      console.log(canvasX, canvasY);
       const imageData = ctx.getImageData(canvasX, canvasY, 1, 1);
       const pixel = imageData.data;
       const dColor = pixel[2] + 256 * pixel[1] + 65536 * pixel[0];
       
       if (dColor != 0) {
         const color = ('0000' + dColor.toString(16)).substr(-6);
+        const w = canvas.width, h = canvas.height;
         $scope.selectedColor = color;
         $scope.$parent.$digest();
+        
+        ctx.beginPath();
+        ctx.clearRect(w/2 - 50, h/2 - 50, w/2 - 50, h/2 - 50);
+        ctx.arc(w/2, h/2, 50, 0, 2 * Math.PI, false);
+        ctx.fillStyle = '#' + color;
+        ctx.fill();
+        ctx.closePath();
       }
     });
   }
