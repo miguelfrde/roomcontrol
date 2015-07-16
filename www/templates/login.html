@@ -4,25 +4,27 @@
 <ion-content>
   <div class="row">
     <div class="col">
-      <form ng-submit="login()">
+      <form name="form" ng-submit="login()">
         <div class="list">
           <label class="item item-input">
             <span class="input-label">Server IP</span>
-            <input type="text" ng-model="serverip" placeholder="RaspberryPi">
+            <input type="text" ng-model="settings.serverip" placeholder="xxx.xxx.xxx.xxx" required
+            ng-pattern="/\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/">
           </label>
           
           <label class="item item-input">
             <span class="input-label">Username</span>
-            <input type="text" ng-model="spotify.username" placeholder="Spotify username">
+            <input type="text" ng-model="spotify.username" placeholder="Spotify username" required>
           </label>
           
           <label class="item item-input">
             <span class="input-label">Password</span>
-            <input type="password" ng-model="spotify.password" placeholder="Spotify password">
+            <input type="password" ng-model="spotify.password" placeholder="Spotify password" required>
           </label>
           
           <label>
-            <button class="button button-block button-balanced" type="submit">
+            <button class="button button-block button-balanced" type="submit"
+              ng-disabled="form.$invalid">
               Link to Spotify and begin
             </button>
           </label>
