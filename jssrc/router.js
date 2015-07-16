@@ -1,5 +1,10 @@
 export function router($stateProvider, $urlRouterProvider) {
   $stateProvider
+    .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html',
+      controller: 'LoginCtrl'
+    })
     .state('roomcontrol', {
       url: '/roomcontrol',
       templateUrl: 'templates/base.html',
@@ -28,5 +33,5 @@ export function router($stateProvider, $urlRouterProvider) {
       url: '/settings',
       templateUrl: 'templates/settings.html'
     });
-  $urlRouterProvider.otherwise('/roomcontrol');
+  $urlRouterProvider.otherwise('/login');
 }
