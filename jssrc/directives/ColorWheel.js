@@ -7,14 +7,22 @@ export class ColorWheel {
     }
   }
 
+  paintCircle(ctx, color) { 
+  }
+
   link($scope, $element, $attrs) {
     const canvas = $element.find('canvas')[0];
     const ctx = canvas.getContext('2d');
     const image = new Image();
+    const w = canvas.width, h = canvas.height;
     image.onload = function() {
       ctx.drawImage(image, 0, 0, image.width, image.height);
     };
     image.src = '/img/color-wheel.png';
+    ctx.clearRect(w/2 - 50, h/2 - 50, w/2 - 50, h/2 - 50);
+    ctx.arc(w/2, h/2, 50, 0, 2 * Math.PI, false);
+    ctx.fillStyle = '#' + $scope.selectedColor;
+    ctx.fill();
 
     $element.bind('click', function(e) { 
       const canvasX = Math.floor(e.pageX - canvas.offsetLeft);
@@ -26,9 +34,8 @@ export class ColorWheel {
       
       if (dColor != 0) {
         const color = ('0000' + dColor.toString(16)).substr(-6);
-        const w = canvas.width, h = canvas.height;
         $scope.selectedColor = color;
-        $scope.$parent.$digest();
+        $scope.$parent.$parent.$digest();
         
         ctx.beginPath();
         ctx.clearRect(w/2 - 50, h/2 - 50, w/2 - 50, h/2 - 50);

@@ -1,13 +1,8 @@
 <ion-view view-title="Light">
   <ion-content scroll="false" id="light">
-    <div class="row">
-      <div class="col">
-      </div>
-    </div>
-    
     <div class="row center">
       <div class="col">
-        <color-wheel selected-color="color">
+        <color-wheel selected-color="light.color">
       </div>
     </div>
     
@@ -15,10 +10,13 @@
       <div class="col">
         <div class="item range range-positive">
           <i class="icon ion-ios-sunny"></i>
-          <input type="range" name="intensity" min="0" max="100" ng-model="intensity">
+          <input type="range" name="intensity" min="0" max="100" ng-model="light.intensity"
+            on-release="saveSettings()">
           <i class="icon ion-ios-sunny-outline"></i>
         </div>
-        <ion-toggle toggle-class="toggle-positive">Status</ion-toggle>
+        <ion-toggle toggle-class="toggle-positive" ng-model="light.status" ng-change="saveSettings()">
+          Status
+        </ion-toggle>
       </div>
     </div>
   </ion-content>
