@@ -9,10 +9,10 @@ export function onReady($ionicPlatform, LocalStorage) {
       StatusBar.styleDefault();
     }
 
-    if (LocalStorage.get('deviceId') == undefined) {
+    if (LocalStorage.getObjectProperty('device', 'id') == undefined) {
       let randomNum = Math.round(Math.random() * 16777215);
       randomNum = ('000000' + randomNum.toString(16)).slice(-6);
-      LocalStorage.set('deviceId', randomNum);
+      LocalStorage.setObjectProperty('device', 'id', randomNum);
     }
   });
 }
