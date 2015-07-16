@@ -7,14 +7,14 @@
             <span class="input-label">Server IP</span>
             <input type="text" placeholder="xxx.xxx.xxx.xxx"
               ng-pattern="/\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/"
-              ng-model="data.serverip" required>
+              ng-model="settings.serverip" required>
           </label>
           
-          <ion-toggle toggle-class="toggle-positive" ng-model="data.notify">
+          <ion-toggle toggle-class="toggle-positive" ng-model="settings.notify">
             Notify me if someone enters
           </ion-toggle>
           
-          <ion-toggle toggle-class="toggle-positive" ng-model="data.sendpic">
+          <ion-toggle toggle-class="toggle-positive" ng-model="settings.sendpic">
             Send me a picture of the invasor
           </ion-toggle>
   
