@@ -26,6 +26,18 @@ $main-menu-item-light-color: $energized;
 $main-menu-item-alarm-color: $assertive;
 $main-menu-item-settings-color: $royal;
 
+a,
+a:link,
+a:visited,
+a:hover {
+  color: $positive;
+  text-decoration: none;
+}
+
+a:active {
+  color: $calm;
+}
+
 ion-content {
   background-color: $stable;
 }
@@ -57,7 +69,7 @@ ion-content {
   height: 7rem;
   border: none;
   font-size: 4rem;
-  color: $stable;
+  color: $stable !important;
 }
 
 #main-menu-item-music {
@@ -111,4 +123,9 @@ img.album-cover {
 input[readonly] {
   background-color: white !important;
   color: $dark;
+}
+
+#about {
+  color: #444;
+  font-size: 0.8rem;
 }
