@@ -19,10 +19,20 @@
         {{track.artist}} - {{track.name}}
       </div>
     </div>
+    
+    <div class="row">
+      <div class="col">
+        <div class="item range range-positive">
+          <i class="icon ion-android-volume-mute"></i>
+          <input type="range" name="intensity" min="0" max="100" ng-model="intensity">
+          <i class="icon ion-android-volume-up"></i>
+        </div>
+      </div>
+    </div>
 
     <div class="row">
       <div class="col">
-        <button class="button button-positive" id="change-playlist-btn" ng-click="openModal()">
+        <button class="button button-full button-positive" ng-click="openModal()">
           Change playlist
         </button>
       </div>
