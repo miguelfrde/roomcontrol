@@ -28,7 +28,7 @@ export class AlarmCtrl {
     $scope.tpslots = {epochTime: 30600, format: 12, step: 5};
     $scope.time = self.epochToTime(30600)
 
-    $scope.timePickerCallback = function (val) {
+    $scope.timePickerCallback = function(val) {
       if (typeof(val) != 'undefined') {
         $scope.time = self.epochToTime(val);
       }
