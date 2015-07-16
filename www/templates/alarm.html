@@ -16,17 +16,21 @@
           <div class="input-label">
             Sound
           </div>
-          <select ng-options="sound for sound in sounds" ng-model="sound">
+          <select ng-model="alarm.sound" ng-change="saveSettings()"
+                  ng-options="sound.id as sound.name for sound in sounds"> 
           </select>
         </label>
         <label class="item item-input item-select">
           <div class="input-label">
             Light program
           </div>
-          <select ng-options="light for light in lightprograms" ng-model="lightprogram">
+          <select ng-model="alarm.light" ng-change="saveSettings()"
+                  ng-options="light.id as light.name for light in lightprograms">
           </select>
         </label>
-        <ion-toggle toggle-class="toggle-positive">Active</ion-toggle>
+        <ion-toggle toggle-class="toggle-positive" ng-model="alarm.active" ng-change="saveSettings()">
+          Active
+        </ion-toggle>
       </div>
     </div>
   </ion-content>

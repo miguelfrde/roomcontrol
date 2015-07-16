@@ -2,35 +2,44 @@
 
 // TODO: get sounds and lightprograms available from the RaspberryPi
 const sounds = [
-  'Extreme wake up',
-  'Releaxed wake up',
-  'Crazy wake up',
-  'Beautiful morning',
-  'Cold morning'
+  {id: 'extreme', name: 'Extreme wake up'},
+  {id: 'relaxed', name: 'Releaxed wake up'},
+  {id: 'crazy', name: 'Crazy wake up'},
+  {id: 'beautiful', name: 'Beautiful morning'},
+  {id: 'cold', name: 'Cold morning'}
 ];
 
 const lightprograms = [
-  'Morning lights',
-  'Colorful',
-  'Orange morning',
-  'Purple morning'
+  {id: 'morning', name: 'Morning lights'},
+  {id: 'colorful', name: 'Colorful'},
+  {id: 'orange', name: 'Orange morning'},
+  {id: 'purple', name: 'Purple morning'}
 ];
 
 export class AlarmCtrl {
-  constructor($scope) {
+  constructor($scope, LocalStorage) {
     const self = this;
 
     $scope.sounds = sounds;
     $scope.lightprograms = lightprograms;
-    $scope.lightprogram = $scope.lightprograms[1];
-    $scope.sound = $scope.sounds[2];
 
-    $scope.tpslots = {epochTime: 30600, format: 12, step: 5};
-    $scope.time = self.epochToTime(30600)
+    $scope.alarm = LocalStorage.getObject('alarm');
+    $scope.alarm.time = $scope.alarm.time || 30600;
+    $scope.alarm.light = $scope.alarm.light || lightprograms[0].id;
+    $scope.alarm.sound = $scope.alarm.sound || sounds[0].id;
+
+    $scope.tpslots = {epochTime: $scope.alarm.time, format: 12, step: 5};
+    $scope.time = self.epochToTime($scope.alarm.time)
+
+    $scope.saveSettings = function() {
+      LocalStorage.setObject('alarm', $scope.alarm);
+    }
 
     $scope.timePickerCallback = function(val) {
       if (typeof(val) != 'undefined') {
         $scope.time = self.epochToTime(val);
+        $scope.alarm.time = val;
+        $scope.saveSettings();
       }
     };
   }
@@ -49,4 +58,4 @@ export class AlarmCtrl {
   }
 }
 
-AlarmCtrl.$inject = ['$scope'];
+AlarmCtrl.$inject = ['$scope', 'LocalStorage'];
