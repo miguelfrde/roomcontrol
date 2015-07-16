@@ -13,7 +13,7 @@ export class LocalStorage {
     this.$window.localStorage[key] = value;
   }
 
-  _setObject(key, value) {
+  setObject(key, value) {
     this.$window.localStorage[key] = JSON.stringify(value);
   }
 
@@ -28,7 +28,7 @@ export class LocalStorage {
   setObjectProperty(objectKey, propKey, value) {
     const obj = this.getObject(objectKey);
     obj[propKey] = value;
-    this._setObject(objectKey, obj);
+    this.setObject(objectKey, obj);
   }
 }
 
