@@ -2,20 +2,27 @@
   <ion-content scroll="false" id="settings">
     <div class="row">
       <div class="col">
-        <label class="item item-input">
-          <span class="input-label">Server IP</span>
-          <input type="text" placeholder="0.0.0.0">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Client secret</span>
-          <input type="text" placeholder="Given by the server">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Client ID</span>
-          <input type="text" value="" readonly>
-        </label>
-        <ion-toggle toggle-class="toggle-positive">Notify me if someone enters</ion-toggle>
-        <ion-toggle toggle-class="toggle-positive">Send me a picture of the invasor</ion-toggle>
+        <form name="form" ng-submit="save(); form.$setPristine()"> 
+          <label class="item item-input">
+            <span class="input-label">Server IP</span>
+            <input type="text" placeholder="xxx.xxx.xxx.xxx"
+              ng-pattern="/\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/"
+              ng-model="data.serverip" required>
+          </label>
+          
+          <ion-toggle toggle-class="toggle-positive" ng-model="data.notify">
+            Notify me if someone enters
+          </ion-toggle>
+          
+          <ion-toggle toggle-class="toggle-positive" ng-model="data.sendpic">
+            Send me a picture of the invasor
+          </ion-toggle>
+  
+          <button class="button button-block button-positive" type="submit"
+            ng-disabled="form.$pristine || form.$invalid">
+            Save
+          </button>
+        </form>
       </div>
     </div>
   </ion-content>

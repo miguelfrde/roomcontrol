@@ -31,7 +31,8 @@ export function router($stateProvider, $urlRouterProvider) {
     })
     .state('roomcontrol.settings', {
       url: '/settings',
-      templateUrl: 'templates/settings.html'
+      templateUrl: 'templates/settings.html',
+      controller: 'SettingsCtrl'
     });
   $urlRouterProvider.otherwise('/login');
 }

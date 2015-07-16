@@ -1,8 +1,14 @@
 'use strict';
 
 export class SettingsCtrl {
-  constructor($scope) {
+  constructor($scope, LocalStorage) {
+    $scope.deactivateSave = true;
+
+    $scope.settings = LocalStorage.getObject('settings');
+
+    $scope.save = function() { 
+    };
   }
 }
 
-SettingsCtrl.$inject = ['$scope'];
+SettingsCtrl.$inject = ['$scope', 'LocalStorage'];
