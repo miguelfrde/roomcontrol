@@ -1,7 +1,7 @@
 'use strict';
 
 export class LoginCtrl {
-  constructor($scope, $state, $ionicHistory, DeviceData) {
+  constructor($scope, $state, $ionicHistory) {
     $scope.spotify = {
       user: '',
       password: ''
@@ -17,4 +17,4 @@ export class LoginCtrl {
   }
 }
 
-LoginCtrl.$inject = ['$scope', '$state', '$ionicHistory', 'DeviceData'];
+LoginCtrl.$inject = ['$scope', '$state', '$ionicHistory'];

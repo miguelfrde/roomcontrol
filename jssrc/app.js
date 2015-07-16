@@ -1,7 +1,6 @@
 import {onReady} from 'bootstrap';
 import {router} from 'router';
 import {Music} from 'services/Music';
-import {DeviceData} from 'services/DeviceData';
 import {LocalStorage} from 'services/LocalStorage';
 import {MusicCtrl} from 'controllers/MusicCtrl';
 import {LightCtrl} from 'controllers/LightCtrl';
@@ -28,7 +27,6 @@ angular.module('roomcontrol.controllers', [])
 
 angular.module('roomcontrol.services', [])
   .service('Music', Music)
-  .service('DeviceData', DeviceData)
   .service('LocalStorage', LocalStorage);
 
 angular.module('roomcontrol.directives', [])
