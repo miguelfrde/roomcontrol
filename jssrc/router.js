@@ -1,27 +1,32 @@
 export function router($stateProvider, $urlRouterProvider) {
   $stateProvider
-    .state('main', {
-      url: '/',
-      templateUrl: 'templates/main.html'
+    .state('roomcontrol', {
+      url: '/roomcontrol',
+      templateUrl: 'templates/base.html',
+      abstract: true
     })
-    .state('music', {
+    .state('roomcontrol.home', {
+      url: '',
+      templateUrl: 'templates/home.html'
+    })
+    .state('roomcontrol.music', {
       url: '/music',
       templateUrl: 'templates/music.html',
       controller: 'MusicCtrl'
     })
-    .state('light', {
+    .state('roomcontrol.light', {
       url: '/light',
       templateUrl: 'templates/light.html',
       controller: 'LightCtrl'
     })
-    .state('alarm', {
+    .state('roomcontrol.alarm', {
       url: '/alarm',
       templateUrl: 'templates/alarm.html',
       controller: 'AlarmCtrl'
     })
-    .state('settings', {
+    .state('roomcontrol.settings', {
       url: '/settings',
       templateUrl: 'templates/settings.html'
-    })
-  $urlRouterProvider.otherwise('/');
+    });
+  $urlRouterProvider.otherwise('/roomcontrol');
 }
