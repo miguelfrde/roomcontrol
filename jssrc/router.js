@@ -3,12 +3,25 @@ export function router($stateProvider, $urlRouterProvider) {
     .state('login', {
       url: '/login',
       templateUrl: 'templates/login.html',
-      controller: 'LoginCtrl'
+      controller: 'LoginCtrl',
+      onEnter: function($state, LocalStorage) {
+        if (LocalStorage.getObjectProperty('device', 'activeSpotify')) {
+          $state.go('roomcontrol.home');
+        }
+      },
+      onExit: function($state, LocalStorage) {
+        LocalStorage.setObjectProperty('device', 'activeSpotify', true);
+      }
     })
     .state('roomcontrol', {
       url: '/roomcontrol',
       templateUrl: 'templates/base.html',
-      abstract: true
+      abstract: true,
+      onEnter: function($state, LocalStorage) {
+        if (!LocalStorage.getObjectProperty('device', 'activeSpotify')) {
+          $state.go('login');
+        }
+      }
     })
     .state('roomcontrol.home', {
       url: '',
