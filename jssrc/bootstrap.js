@@ -1,4 +1,4 @@
-export function onReady($ionicPlatform) {
+export function onReady($ionicPlatform, LocalStorage) {
   $ionicPlatform.ready(() => {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -7,6 +7,12 @@ export function onReady($ionicPlatform) {
     }
     if (window.StatusBar) {
       StatusBar.styleDefault();
+    }
+
+    if (LocalStorage.get('deviceId') == undefined) {
+      let randomNum = Math.round(Math.random() * 16777215);
+      randomNum = ('000000' + randomNum.toString(16)).slice(-6);
+      LocalStorage.set('deviceId', randomNum);
     }
   });
 }
