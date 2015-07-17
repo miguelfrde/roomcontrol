@@ -31,7 +31,23 @@
     </div>
 
     <div class="row">
-      <div class="col">
+      <div class="col col-20">
+        <button class="button button-full button-positive" ng-click="previousSong()">
+          <i class="ion-skip-backward"></i>
+        </button>
+      </div>
+      <div class="col col-20">
+        <button class="button button-full button-positive" ng-click="playPause()">
+          <i class="ion-play" ng-show="!playStatus"></i>
+          <i class="ion-pause" ng-show="playStatus"></i>
+        </button>
+      </div>
+      <div class="col col-20">
+        <button class="button button-full button-positive" ng-click="previousSong()">
+          <i class="ion-skip-forward"></i>
+        </button>
+      </div>
+      <div class="col col-40">
         <button class="button button-full button-positive" ng-click="openModal()">
           Change playlist
         </button>
