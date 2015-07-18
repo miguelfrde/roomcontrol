@@ -38,6 +38,12 @@ a:active {
   color: $calm;
 }
 
+a.item:hover,
+a.item:active,
+a.item:visited {
+  color: black;
+}
+
 .col-40 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 40%;
