@@ -1,15 +1,7 @@
 // TODO: connect to the RPI, instead of using example values
 
-function shuffle(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    const r = i + Math.floor(Math.random() * (arr.length - i));
-    const t = arr[i];
-    arr[i] = arr[r];
-    arr[r] = t;
-  }
-}
-
 // Example data, maps a track spotify id to the needed data
+// This should be fetched from the server shuffled
 const exampleTracks = {
   0: {
     name: 'Hisigen Blues',
@@ -65,13 +57,13 @@ const exampleTracks = {
 
 // Example data, maps the spotify playlist id to the playlist needed data
 const examplePlaylists = {
-  0: {
+  1: {
     name: 'Svenska rock',
     tracks: [
       0, 1, 2
     ]
   },
-  1: {
+  0: {
     name: 'Cool electronic',
     tracks: [
       3, 4, 5
@@ -92,36 +84,48 @@ const examplePlaylists = {
 };
 
 export class Music {
-  constructor() {
-    this.currentPlaylist = 0;
+  constructor(LocalStorage) {
+    this._playlist = LocalStorage.getObjectProperty('music', 'playlist') || 0;
     this.playlists = examplePlaylists;
-    this.tracks = examplePlaylists[0].tracks
-    shuffle(this.tracks);
-    this.currTrack = 0;
+    this.tracks = examplePlaylists[this._playlist].tracks
+    this.currTrack = LocalStorage.getObjectProperty('music', 'track') || 0;
+    this.LocalStorage = LocalStorage;
   }
 
   set playlist(p) {
     if (this.playlists[p] == undefined) {
       throw "Unknown playlist";
     }
-    if (this.currentPlaylist != p) {
-      this.currentPlaylist = p;
+    if (this._playlist != p) {
+      this._playlist = p;
+      this.LocalStorage.setObjectProperty('music', 'playlist', p)
       this.tracks = this.playlists[p].tracks
-      shuffle(this.tracks);
       this.currTrack = 0;
     }
   }
 
   get playlist() {
-    return examplePlaylists[this.currentPlaylist];
+    return examplePlaylists[this._playlist];
   }
 
   get currentTrack() {
     return exampleTracks[this.tracks[this.currTrack]];
   }
 
-  nextTrack() {
+  get previousTrack() {
+    this.currTrack = (this.currTrack - 1) % this.tracks.length;
+    if (this.currTrack < 0) {
+      this.currTrack = this.tracks.length + this.currTrack;
+    }
+    this.LocalStorage.setObjectProperty('music', 'track', this.currTrack);
+    return exampleTracks[this.tracks[this.currTrack]];
+  }
+
+  get nextTrack() {
     this.currTrack = (this.currTrack + 1) % this.tracks.length;
+    this.LocalStorage.setObjectProperty('music', 'track', this.currTrack);
     return exampleTracks[this.tracks[this.currTrack]];
   }
 }
+
+Music.$inject = ['LocalStorage'];

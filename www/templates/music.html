@@ -5,18 +5,18 @@
     </div>
     
     <div class="row">
-        <div class="col"><h3>{{currPlaylist.name}} playlist</h3></div>
+      <div class="col"><h3>{{data.currPlaylist}} playlist</h3></div>
     </div>
     
     <div class="row">
       <div class="col">
-        <img class="album-cover" src="{{track.albumCoverUrl}}">
+        <img class="album-cover" ng-src="{{data.track.albumCoverUrl}}">
       </div>
     </div>
 
     <div class="row">
       <div class="col">
-        {{track.artist}} - {{track.name}}
+        {{data.track.artist}} - {{data.track.name}}
       </div>
     </div>
     
@@ -24,7 +24,8 @@
       <div class="col">
         <div class="item range range-positive">
           <i class="icon ion-android-volume-mute"></i>
-          <input type="range" name="intensity" min="0" max="100" ng-model="intensity">
+          <input type="range" name="volume" min="0" max="100" ng-model="data.volume"
+            on-release="updateVolume()">
           <i class="icon ion-android-volume-up"></i>
         </div>
       </div>
@@ -38,8 +39,8 @@
       </div>
       <div class="col col-20">
         <button class="button button-full button-positive" ng-click="playPause()">
-          <i class="ion-play" ng-show="!playStatus"></i>
-          <i class="ion-pause" ng-show="playStatus"></i>
+          <i class="ion-play" ng-show="!data.playStatus"></i>
+          <i class="ion-pause" ng-show="data.playStatus"></i>
         </button>
       </div>
       <div class="col col-20">
