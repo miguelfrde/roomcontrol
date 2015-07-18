@@ -7,9 +7,6 @@ export class ColorWheel {
     }
   }
 
-  paintCircle(ctx, color) { 
-  }
-
   link($scope, $element, $attrs) {
     const canvas = $element.find('canvas')[0];
     const ctx = canvas.getContext('2d');
@@ -33,7 +30,7 @@ export class ColorWheel {
       const dColor = pixel[2] + 256 * pixel[1] + 65536 * pixel[0];
       
       if (dColor != 0) {
-        const color = ('0000' + dColor.toString(16)).substr(-6);
+        const color = ('000000' + dColor.toString(16)).substr(-6);
         $scope.selectedColor = color;
         $scope.$parent.$parent.$digest();
         
