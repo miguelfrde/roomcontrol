@@ -1,5 +1,7 @@
 # Room Control Mobile App
 
+**WARNING: Under development... WIP!**
+
 Allows to control a room's lights, set up alarms, play music and take pictures
 of people who enter the room. Connects to the
 [Room Control Raspberry Pi](https://github.com/miguelfrde/roomcontrol_backend).
