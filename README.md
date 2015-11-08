@@ -8,6 +8,15 @@ of people who enter the room. Connects to the
 
 Built with [Ionic](http://ionicframework.com/).
 
+## Set up for development
+
+```
+$ npm install ionic gulp bower -g
+$ npm install
+$ bower install
+$ ionic serve
+```
+
 ## Screenshots
 
 ![Room Control App screens](https://www.dropbox.com/s/qkuw9pomj2utn1z/screens.png?raw=true)

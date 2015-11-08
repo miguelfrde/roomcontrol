@@ -9,4 +9,5 @@ www/css/ionic.app.min.css
 www/js/all.js
 www/js/all.js.map
 www/lib/*
+build/
 !www/lib/README.md

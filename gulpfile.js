@@ -1,68 +1,167 @@
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var babel = require('gulp-babel');
-var sourcemaps = require('gulp-sourcemaps');
-var bower = require('bower');
-var concat = require('gulp-concat');
-var sass = require('gulp-sass');
-var minifyCss = require('gulp-minify-css');
-var rename = require('gulp-rename');
-var sh = require('shelljs');
+/******************************************************************************
+ * Gulpfile
+ * Be sure to run `npm install` for `gulp` and the following tasks to be
+ * available from the command line. All tasks are run using `gulp taskName`.
+ ******************************************************************************/
 
-var paths = {
-  sass: ['./scss/**/*.scss'],
-  scripts: ['./jssrc/**/{!(app.js), *.js}', './jssrc/app.js']
-};
+// node module imports
+var gulp = require('gulp'),
+    webpack = require('webpack'),
+    minimist = require('minimist'),
+    sass = require('gulp-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
+    watch = require('gulp-watch'),
+    browserSync = require('browser-sync'),
+    reload = browserSync.reload;
 
-gulp.task('default', ['sass', 'scripts']);
 
-gulp.task('scripts', function () {
-  return gulp.src(paths.scripts)
-    .pipe(sourcemaps.init())
-    .pipe(babel({
-      modules: 'amd',
-      moduleIds: true
-     }))
-    .pipe(concat('all.js'))
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./www/js'));
+var IONIC_DIR = "node_modules/ionic-framework/"
+
+
+/******************************************************************************
+ * watch
+ * Build the app, and rebuild when source files change.
+ * Also starts a local web server.
+ ******************************************************************************/
+gulp.task('watch', ['sass', 'fonts'], function(done) {
+  watch('www/app/**/*.scss', function(){
+    gulp.start('sass');
+  });
+  compile(true, function(){
+    done();
+  });
 });
 
-gulp.task('sass', function(done) {
-  gulp.src('./scss/ionic.app.scss')
+
+/******************************************************************************
+ * build
+ * Build the app once, without watching for source file changes.
+ ******************************************************************************/
+gulp.task('build', ['sass', 'fonts'], function(done) {
+  compile(false, done);
+});
+
+
+/******************************************************************************
+ * serve
+ * Start a local web server serving the 'www' directory.
+ * The default is http://localhost:8100. Use the optional '--port'
+ * flag to specify a different port.
+ ******************************************************************************/
+gulp.task('serve', function() {
+  browserSync({
+    server: {
+      baseDir: 'www',
+    },
+    port: flags.port,
+    files: [
+      'www/**/*.html'
+    ],
+    notify: false
+  });
+});
+
+
+/******************************************************************************
+ * sass
+ * Convert Sass files to a single bundled CSS file. Uses auto-prefixer
+ * to automatically add required vendor prefixes when needed.
+ ******************************************************************************/
+gulp.task('sass', function(){
+  var autoprefixerOpts = {
+    browsers: [
+      'last 2 versions',
+      'iOS >= 7',
+      'Android >= 4',
+      'Explorer >= 10',
+      'ExplorerMobile >= 11'
+    ],
+    cascade: false
+  };
+
+  return gulp.src('www/app/app.scss')
     .pipe(sass({
-      errLogToConsole: true
+      includePaths: [IONIC_DIR + 'src/scss'],
     }))
-    .pipe(gulp.dest('./www/css/'))
-    .pipe(minifyCss({
-      keepSpecialComments: 0
-    }))
-    .pipe(rename({ extname: '.min.css' }))
-    .pipe(gulp.dest('./www/css/'))
-    .on('end', done);
+    .on('error', function(err){
+      console.error(err.message);
+      this.emit('end');
+    })
+    .pipe(autoprefixer(autoprefixerOpts))
+    .pipe(gulp.dest('www/build/css'))
+    .pipe(reload({ stream: true }));
 });
 
-gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
-  gulp.watch(paths.scripts, ['scripts']);
+
+/******************************************************************************
+ * fonts
+ * Copy Ionic font files to build directory.
+ ******************************************************************************/
+gulp.task('fonts', function() {
+  return gulp.src([
+      IONIC_DIR + 'fonts/**/*.ttf',
+      IONIC_DIR + 'fonts/**/*.woff'
+    ])
+    .pipe(gulp.dest('www/build/fonts'));
 });
 
-gulp.task('install', ['git-check'], function() {
-  return bower.commands.install()
-    .on('log', function(data) {
-      gutil.log('bower', gutil.colors.cyan(data.id), data.message);
-    });
+
+/******************************************************************************
+ * clean
+ * Delete previous build files.
+ ******************************************************************************/
+gulp.task('clean', function(done) {
+  var del = require('del');
+  del(['www/build'], done);
 });
 
-gulp.task('git-check', function(done) {
-  if (!sh.which('git')) {
-    console.log(
-      '  ' + gutil.colors.red('Git is not installed.'),
-      '\n  Git, the version control system, is required to download Ionic.',
-      '\n  Download git here:', gutil.colors.cyan('http://git-scm.com/downloads') + '.',
-      '\n  Once git is installed, run \'' + gutil.colors.cyan('gulp install') + '\' again.'
-    );
-    process.exit(1);
+
+
+/******************************************************************************
+ * Compile
+ ******************************************************************************/
+function compile(watch, cb) {
+  // prevent gulp calling done callback more than once when watching
+  var firstTime = true;
+
+  // load webpack config
+  var config = require('./webpack.config.js');
+
+  // https://github.com/webpack/docs/wiki/node.js-api#statstojsonoptions
+  var statsOptions = {
+    'colors': true,
+    'modules': true,
+    'chunks': false,
+    'exclude': ['node_modules']
   }
-  done();
-});
+
+  // run (one time compile) or watch
+  // https://github.com/webpack/docs/wiki/node.js-api
+  var compilerFunc = (watch ? 'watch' : 'run');
+  var compilerFuncArgs = [compileHandler];
+  watch && compilerFuncArgs.unshift(null); // watch takes config obj as first arg
+
+  // Call compiler.run(compileHandler) or compiler.watch(null, compileHandler)
+  var compiler = webpack(config);
+  compiler[compilerFunc].apply(compiler, compilerFuncArgs);
+
+  function compileHandler(err, stats){
+    if (firstTime) {
+      firstTime = false;
+      cb();
+    } else {
+      reload();
+    }
+
+    // print build stats and errors
+    console.log(stats.toString(statsOptions));
+  }
+}
+
+
+// command line flag config
+var flagConfig = {
+  string: 'port',
+  default: { port: 8100 }
+};
+var flags = minimist(process.argv.slice(2), flagConfig);
