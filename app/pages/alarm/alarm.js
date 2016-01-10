@@ -2,9 +2,9 @@ import { NavController, Page } from 'ionic/ionic';
 
 
 @Page({
-  templateUrl: 'app/pages/light/light.html'
+  templateUrl: 'build/pages/alarm/alarm.html'
 })
-export class LightPage {
+export class AlarmPage {
   constructor(nav: NavController) {
     this.nav = nav;
   }

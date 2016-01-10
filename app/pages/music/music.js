@@ -2,7 +2,7 @@ import { NavController, Page } from 'ionic/ionic';
 
 
 @Page({
-  templateUrl: 'app/pages/music/music.html'
+  templateUrl: 'build/pages/music/music.html'
 })
 export class MusicPage {
   constructor(nav: NavController) {

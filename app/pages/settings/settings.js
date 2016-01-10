@@ -2,16 +2,17 @@ import { NavController, Page } from 'ionic/ionic';
 
 
 @Page({
-  templateUrl: 'app/pages/settings/settings.html'
+  templateUrl: 'build/pages/settings/settings.html'
 })
 export class SettingsPage {
+  settings: Object = {
+    server: '',
+    notify_on_enter: false,
+    send_pic_on_enter: false
+  };
+
   constructor(nav: NavController) {
     this.nav = nav;
-    this.settings = {
-        server: '',
-        notify_on_enter: false,
-        send_pic_on_enter: false
-    };
   }
 
   saveSettings(event) {

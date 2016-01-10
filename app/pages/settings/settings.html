@@ -1,0 +1,25 @@
+<ion-navbar *navbar secondary>
+  <ion-title>Settings</ion-title>
+  <ion-buttons end>
+    <button (click)="saveSettings($event)">Save</button>
+  </ion-buttons>
+</ion-navbar>
+
+<ion-content>
+
+  <ion-list>
+    <ion-input class="item">
+      <ion-label>Server IP</ion-label>
+      <input type="text" value="" [(ngModel)]="settings.server" placeholder='192.168.1.1'>
+    </ion-input>
+
+    <ion-toggle checked="settings.notify_on_enter">
+      Notify me when someone enters
+    </ion-toggle>
+
+    <ion-toggle checked="settings.send_pic_on_enter">
+      Send me a picture of the invasor
+    </ion-toggle>
+  </ion-list>
+
+<ion-content>

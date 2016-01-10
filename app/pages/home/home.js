@@ -6,16 +6,16 @@ import { SettingsPage } from '../settings/settings';
 
 
 @Page({
-  templateUrl: 'app/pages/home/home.html'
+  templateUrl: 'build/pages/home/home.html'
 })
 export class HomePage {
   constructor(nav: NavController) {
     this.nav = nav;
     this.pages = [
-        {name: 'Light', component: LightPage},
-        {name: 'Music', component: MusicPage},
-        {name: 'Alarm', component: AlarmPage},
-        {name: 'Settings', component: SettingsPage}
+      {name: 'Light', component: LightPage},
+      {name: 'Music', component: MusicPage},
+      {name: 'Alarm', component: AlarmPage},
+      {name: 'Settings', component: SettingsPage}
     ];
   }
 
