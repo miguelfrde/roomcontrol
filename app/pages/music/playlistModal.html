@@ -1,0 +1,17 @@
+<ion-toolbar class="android-attr" secondary>
+  <ion-title>
+    Change playlist
+  </ion-title>
+
+  <ion-buttons end>
+    <button (click)="dismiss()">Cancel</button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="#playlist of playlists" (click)="choosePlaylist(playlist)">
+      <p>{{ playlist.name }}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

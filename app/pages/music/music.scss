@@ -1,0 +1,51 @@
+@import "../../theme/app.variables";
+
+.music {
+  height: 100%;
+  margin-bottom: -10px;
+
+  ion-row, ion-col {
+    padding: 0;
+  }
+
+  .song-cover {
+    height: 60%;
+    overflow: hidden;
+  }
+
+  .song-info {
+    height: 25%;
+    background-color: map-get($colors, secondary);
+    padding: 2.5rem 2.5rem;
+
+    button.change-playlist {
+      margin-top: -4.5rem;
+      right: 2rem;
+    }
+
+    p {
+      margin: 0;
+      color: map-get($colors, white);
+    }
+
+    .song-name {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .music-controls {
+    height: 15%;
+    padding: 0;
+    background-color: map-get($colors, secondary-dark);
+    color: map-get($colors, white);
+    font-size: 2.25rem;
+
+    button {
+      padding: 25% 25%;
+      margin: 0;
+      width: 100%;
+      color: map-get($colors, white);
+    }
+  }
+}

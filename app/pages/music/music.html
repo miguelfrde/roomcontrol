@@ -1,6 +1,37 @@
-<ion-navbar *navbar>
-  <ion-title>Music</ion-title>
+<ion-navbar *navbar secondary>
+  <ion-title>Now playing</ion-title>
 </ion-navbar>
 
-<ion-content>
-<ion-content>
+<ion-content class="music">
+
+  <ion-row class="song-cover">
+    <ion-col>
+      <img [src]="song.albumCoverUrl">
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="song-info">
+    <ion-col>
+      <button class="change-playlist" fab (click)=[openPlaylistModal()]>
+        <ion-icon music-note></ion-icon>
+      </button>
+      <p class="song-name">{{ song.name }}</p>
+      <p class="song-artist">{{ song.artist }}</p>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="music-controls">
+    <ion-col>
+      <button clear><ion-icon name="skip-backward"></ion-icon></button>
+    </ion-col>
+
+    <ion-col>
+      <button clear><ion-icon name="play"></ion-icon></button>
+    </ion-col>
+
+    <ion-col>
+      <button clear><ion-icon name="skip-forward"></ion-icon></button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
