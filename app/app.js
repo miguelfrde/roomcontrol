@@ -1,9 +1,11 @@
 import {App, Platform, Config} from 'ionic/ionic';
 import {HomePage} from './pages/home/home';
+import {Settings} from './providers/settings';
 
 
 @App({
   templateUrl: 'build/app.html',
+  providers: [Settings],
   config: {
     mode: 'md'
   }

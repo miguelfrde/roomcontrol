@@ -1,22 +1,25 @@
-import { NavController, Page } from 'ionic/ionic';
+import {NavController, Page} from 'ionic/ionic';
+import {Settings} from '../../providers/settings'
 
 
 @Page({
-  templateUrl: 'build/pages/settings/settings.html'
+  templateUrl: 'build/pages/settings/settings.html',
 })
 export class SettingsPage {
-  settings: Object = {
-    server: '',
-    notify_on_enter: false,
-    send_pic_on_enter: false
-  };
+  constructor(settingsProvider: Settings, nav: NavController) {
+    settingsProvider.get().then(data => {
+      this.settings = data;
+    });
+    this.settingsProvider = settingsProvider;
+    this.nav = nav;
+  }
 
   constructor(nav: NavController) {
     this.nav = nav;
   }
 
   saveSettings(event) {
-    // TODO: save settings
+    this.settingsProvider.save(this.settings);
     this.nav.pop()
   }
 }

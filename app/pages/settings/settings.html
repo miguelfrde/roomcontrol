@@ -13,11 +13,11 @@
       <input type="text" value="" [(ngModel)]="settings.server" placeholder='192.168.1.1'>
     </ion-input>
 
-    <ion-toggle checked="settings.notify_on_enter">
+    <ion-toggle [(ngModel)]="settings.notify">
       Notify me when someone enters
     </ion-toggle>
 
-    <ion-toggle checked="settings.send_pic_on_enter">
+    <ion-toggle [(ngModel)]="settings.sendpic">
       Send me a picture of the invasor
     </ion-toggle>
   </ion-list>
